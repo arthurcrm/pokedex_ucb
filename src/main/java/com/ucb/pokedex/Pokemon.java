@@ -1,9 +1,6 @@
 package com.ucb.pokedex;
 
-import java.util.List;
-import java.util.Scanner;
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class Pokemon extends Caracteristica {
 
@@ -42,6 +39,39 @@ public class Pokemon extends Caracteristica {
         } catch (Exception error) {
             System.out.println("Error: " + error.toString());
         }
+    }
+
+    public void excluir(int id) {
+        File inputFile = new File("src/main/java/com/ucb/pokedex/database/pokemon.txt");
+        File tempFile = new File(inputFile.getAbsolutePath() + ".tmp");
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(inputFile));
+            PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+
+            String line = null;
+
+            while ((line = br.readLine()) != null) {
+
+                if (!line.trim().equals("" + id)) {
+                    pw.println(line);
+                    pw.flush();
+                }
+            }
+            br.close();
+            pw.close();
+
+            if (!inputFile.delete()) {
+                System.out.println("Nao foi possivel deletar o arquivo, cheque as permissoes.");
+                return;
+            }
+
+            if (!tempFile.renameTo(inputFile))
+                System.out.println("Nao foi possivel renomear o arquivo, cheque as permissoes.");
+        } catch (Exception err) {
+            System.out.println(err.toString());
+        }
+
     }
 
     public Pokemon() {
