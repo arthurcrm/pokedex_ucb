@@ -3,19 +3,13 @@ package com.ucb.pokedex;
 //Superclasse
 public class Caracteristica {
     private String nome;
-    private int id;
-    private double altura;
-    private String genero;
-    private String regiao;
-
-    public int getId() {
-        return id;
+    private Double altura;
+    public double getAltura() {
+    	return altura;
     }
-
-    public int setId() {
-        return this.id++;
+    public void setAltura(Double altura) {
+    	this.altura=altura;
     }
-
     public String getNome() {
         return nome;
     }
@@ -24,34 +18,10 @@ public class Caracteristica {
         this.nome = nome;
     }
 
-    public double getAltura() {
-        return altura;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getRegiao() {
-        return regiao;
-    }
-
-    public void setRegiao(String regiao) {
-        this.regiao = regiao;
-    }
-
-    public void imprimir() {
-        System.out.println("Nome:" + getNome());
+    public void imprimirAltura() {
         System.out.println("Altura:" + getAltura());
-        System.out.println("Genero:" + getGenero());
-        System.out.println("Regiao:" + getRegiao());
+    }
+    public void imprimirNome() {
+        System.out.println("Nome:" + getNome());
     }
 }
