@@ -3,9 +3,18 @@ package com.ucb.pokedex;
 //Superclasse
 public class Caracteristica {
     private String nome;
+    private int id;
     private double altura;
     private String genero;
     private String regiao;
+
+    public int getId() {
+        return id;
+    }
+
+    public int setId() {
+        return this.id++;
+    }
 
     public String getNome() {
         return nome;
