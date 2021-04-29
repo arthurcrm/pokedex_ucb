@@ -1,81 +1,112 @@
 package com.ucb.pokedex;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class Pokemon extends Caracteristica {
 
-    private String tipo;
-    private String habilidade;
-    private Double peso;
+  private String tipo;
+  private String habilidade;
+  private Double peso;
 
-    public String getTipo() {
-        return tipo;
+  public String getTipo() {
+    return tipo;
+  }
+
+  public void setTipo(String tipo) {
+    this.tipo = tipo;
+  }
+
+  public String getHabilidade() {
+    return habilidade;
+  }
+
+  public void setHabilidade(String habilidade) {
+    this.habilidade = habilidade;
+  }
+
+  public Double getPeso() {
+    return peso;
+  }
+
+  public void setPeso(Double peso) {
+    this.peso = peso;
+  }
+
+  public void salvar(Pokemon pokemon) {
+    try {
+      FileWriter fw = new FileWriter("src/main/java/com/ucb/pokedex/database/pokemon.txt");
+      fw.close();
+    } catch (Exception error) {
+      System.out.println("Error: " + error.toString());
     }
+  }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+  public void excluir(int id) {
+    File inputFile = new File("src/main/java/com/ucb/pokedex/database/pokemon.txt");
+    File tempFile = new File(inputFile.getAbsolutePath() + ".tmp");
 
-    public String getHabilidade() {
-        return habilidade;
-    }
+    try {
+      BufferedReader br = new BufferedReader(new FileReader(inputFile));
+      PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
 
-    public void setHabilidade(String habilidade) {
-        this.habilidade = habilidade;
-    }
+      String line = null;
 
-    public Double getPeso() {
-        return peso;
-    }
+      while ((line = br.readLine()) != null) {
 
-    public void setPeso(Double peso) {
-        this.peso = peso;
-    }
-
-    public void salvar(Pokemon pokemon) {
-        try {
-            FileWriter fw = new FileWriter("src/main/java/com/ucb/pokedex/database/pokemon.txt");
-            fw.close();
-        } catch (Exception error) {
-            System.out.println("Error: " + error.toString());
+        if (!line.trim().equals("" + id)) {
+          pw.println(line);
+          pw.flush();
         }
+      }
+      br.close();
+      pw.close();
+
+      if (!inputFile.delete()) {
+        System.out.println("Nao foi possivel deletar o arquivo, cheque as permissoes.");
+        return;
+      }
+
+      if (!tempFile.renameTo(inputFile))
+        System.out.println("Nao foi possivel renomear o arquivo, cheque as permissoes.");
+    } catch (Exception err) {
+      System.out.println(err.toString());
     }
 
-    public void excluir(int id) {
-        File inputFile = new File("src/main/java/com/ucb/pokedex/database/pokemon.txt");
-        File tempFile = new File(inputFile.getAbsolutePath() + ".tmp");
+  }
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(inputFile));
-            PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
+  public void criar() {
+    Scanner scan = new Scanner(System.in);
 
-            String line = null;
+    String nomePokemon = "";
+    String tipoPokemon = "";
+    String habilidadePokemon = "";
+    Double pesoPokemon = 0.0;
 
-            while ((line = br.readLine()) != null) {
+    System.out.println("----------------Catalogar pokemons--------------");
+    System.out.println("Digite o nome do pokemon que deseja catalogar");
+    scan.nextLine();
+    nomePokemon = scan.nextLine();
+    this.setNome(nomePokemon);
+    //
+    System.out.println("Digite o tipo desse pokemon");
+    tipoPokemon = scan.nextLine();
+    this.setTipo(tipoPokemon);
+    //
+    System.out.println("Digite a habilidade desse pokemon");
+    tipoPokemon = scan.nextLine();
+    this.setHabilidade(habilidadePokemon);
+    //
+    System.out.println("Digite o peso desse pokemon");
+    tipoPokemon = scan.nextLine();
+    this.setPeso(pesoPokemon);
+    this.setId();
+    this.salvar(this);
+    scan.close();
+  }
 
-                if (!line.trim().equals("" + id)) {
-                    pw.println(line);
-                    pw.flush();
-                }
-            }
-            br.close();
-            pw.close();
-
-            if (!inputFile.delete()) {
-                System.out.println("Nao foi possivel deletar o arquivo, cheque as permissoes.");
-                return;
-            }
-
-            if (!tempFile.renameTo(inputFile))
-                System.out.println("Nao foi possivel renomear o arquivo, cheque as permissoes.");
-        } catch (Exception err) {
-            System.out.println(err.toString());
-        }
-
-    }
-
-    public Pokemon() {
-        super();
-    }
+  public Pokemon() {
+    super();
+  }
 
 }

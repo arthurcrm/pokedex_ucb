@@ -33,30 +33,7 @@ public class Main {
             opcao = scan.nextInt();
             switch (opcao) {
               case 1:
-                String nomePokemon = "";
-                String tipoPokemon = "";
-                String habilidadePokemon = "";
-                Double pesoPokemon = 0.0;
-
-                System.out.println("----------------Catalogar pokemons--------------");
-                System.out.println("Digite o nome do pokemon que deseja catalogar");
-                scan.nextLine();
-                nomePokemon = scan.nextLine();
-                pk.setNome(nomePokemon);
-                //
-                System.out.println("Digite o tipo desse pokemon");
-                tipoPokemon = scan.nextLine();
-                pk.setTipo(tipoPokemon);
-                //
-                System.out.println("Digite a habilidade desse pokemon");
-                tipoPokemon = scan.nextLine();
-                pk.setHabilidade(habilidadePokemon);
-                //
-                System.out.println("Digite o peso desse pokemon");
-                tipoPokemon = scan.nextLine();
-                pk.setPeso(pesoPokemon);
-                pk.setId();
-                pk.salvar(pk);
+                pk.criar();
                 break;
               case 2:
                 System.out.println("Lista de pokemons");
