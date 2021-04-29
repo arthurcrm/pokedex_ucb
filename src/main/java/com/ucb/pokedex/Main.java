@@ -64,6 +64,7 @@ public class Main {
 									String st;
 									while ((st = br.readLine()) != null)
 										System.out.println(st);
+									br.close();
 								} catch (Exception error) {
 									System.out.println("Error: " + error.toString());
 								}
