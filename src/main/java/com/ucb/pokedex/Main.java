@@ -40,6 +40,7 @@ public class Main {
 
                 System.out.println("----------------Catalogar pokemons--------------");
                 System.out.println("Digite o nome do pokemon que deseja catalogar");
+                scan.nextLine();
                 nomePokemon = scan.nextLine();
                 pk.setNome(nomePokemon);
                 //
