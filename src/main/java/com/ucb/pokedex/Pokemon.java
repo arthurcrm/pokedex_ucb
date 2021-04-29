@@ -1,7 +1,7 @@
 package com.ucb.pokedex;
 
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class Pokemon extends Caracteristica {
 
@@ -94,15 +94,55 @@ public class Pokemon extends Caracteristica {
     this.setTipo(tipoPokemon);
     //
     System.out.println("Digite a habilidade desse pokemon");
-    tipoPokemon = scan.nextLine();
+    habilidadePokemon = scan.nextLine();
     this.setHabilidade(habilidadePokemon);
     //
     System.out.println("Digite o peso desse pokemon");
-    tipoPokemon = scan.nextLine();
+    pesoPokemon = scan.nextDouble();
     this.setPeso(pesoPokemon);
     this.setId();
     this.salvar(this);
     scan.close();
+  }
+
+  public void listar() {
+    System.out.println("Lista de pokemons");
+    File f = new File("src/main/java/com/ucb/pokedex/database/pokemon.txt");
+    try {
+      BufferedReader br = new BufferedReader(new FileReader(f));
+      String st;
+      while ((st = br.readLine()) != null)
+        System.out.println(st);
+      br.close();
+    } catch (Exception error) {
+      System.out.println("O arquivo nao existe.");
+    }
+  }
+
+  public void alterar(int id) {
+    Scanner pkScan = new Scanner(System.in);
+
+    String novoNomePokemon = "";
+    String novoTipoPokemon = "";
+    String novaHabilidadePokemon = "";
+    Double novoPesoPokemon = 0.0;
+
+    Pokemon newPk = new Pokemon();
+
+    System.out.println("Digite o novo nome desse pokemon");
+    novoNomePokemon = pkScan.nextLine();
+    newPk.setNome(novoNomePokemon);
+    System.out.println("Digite o novo tipo desse pokemon");
+    novoTipoPokemon = pkScan.nextLine();
+    newPk.setTipo(novoTipoPokemon);
+    System.out.println("Digite a nova habilidade desse pokemon");
+    novaHabilidadePokemon = pkScan.nextLine();
+    newPk.setHabilidade(novaHabilidadePokemon);
+    System.out.println("Digite o novo peso desse pokemon");
+    novoPesoPokemon = pkScan.nextDouble();
+    newPk.setPeso(novoPesoPokemon);
+    pkScan.close();
+
   }
 
   public Pokemon() {

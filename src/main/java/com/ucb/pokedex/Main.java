@@ -36,19 +36,13 @@ public class Main {
                 pk.criar();
                 break;
               case 2:
-                System.out.println("Lista de pokemons");
-                File f = new File("src/main/java/com/ucb/pokedex/database/pokemon.txt");
-                try {
-                  BufferedReader br = new BufferedReader(new FileReader(f));
-                  String st;
-                  while ((st = br.readLine()) != null)
-                    System.out.println(st);
-                  br.close();
-                } catch (Exception error) {
-                  System.out.println("O arquivo nao existe.");
-                }
+                pk.listar();
                 break;
               case 3:
+                System.out.println("Alterar pokemon");
+                System.out.println("Digite o ID do pokemon que deseja alterar");
+                int id = scan.nextInt();
+                pk.alterar(id);
                 break;
               case 4:
                 System.out.println("Excluir pokemon");
