@@ -1,5 +1,5 @@
+package com.ucb.pokedex;
 
-package pokedexo;
 //Superclasse
 public class Caracteristica {
     private String nome;
@@ -38,10 +38,11 @@ public class Caracteristica {
     public void setRegiao(String regiao) {
         this.regiao = regiao;
     }
-    public void imprimir(){
-        System.out.println("Nome:"+ getNome());
-        System.out.println("Altura:"+ getAltura());
-        System.out.println("Gênero:"+ getGenero());
-        System.out.println("Região:"+ getRegiao());
+
+    public void imprimir() {
+        System.out.println("Nome:" + getNome());
+        System.out.println("Altura:" + getAltura());
+        System.out.println("Genero:" + getGenero());
+        System.out.println("Regiao:" + getRegiao());
     }
 }

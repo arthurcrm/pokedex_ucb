@@ -1,4 +1,4 @@
-package pokedexo;
+package com.ucb.pokedex;
 
 import java.util.List;
 
