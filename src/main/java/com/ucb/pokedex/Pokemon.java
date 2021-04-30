@@ -1,13 +1,22 @@
 package com.ucb.pokedex;
 
 import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class Pokemon extends Caracteristica {
 
   private String tipo;
   private String habilidade;
   private Double peso;
+  private int id;
+
+  public int getId() {
+    return id;
+  }
+
+  public int setId() {
+    return this.id++;
+  }
 
   public String getTipo() {
     return tipo;
@@ -82,10 +91,9 @@ public class Pokemon extends Caracteristica {
     String tipoPokemon = "";
     String habilidadePokemon = "";
     Double pesoPokemon = 0.0;
-
+    Double alturaPokemon = 0.0;
     System.out.println("----------------Catalogar pokemons--------------");
     System.out.println("Digite o nome do pokemon que deseja catalogar");
-    scan.nextLine();
     nomePokemon = scan.nextLine();
     this.setNome(nomePokemon);
     //
@@ -100,9 +108,12 @@ public class Pokemon extends Caracteristica {
     System.out.println("Digite o peso desse pokemon");
     pesoPokemon = scan.nextDouble();
     this.setPeso(pesoPokemon);
+    System.out.println("Digite a altura desse pokemon");
+    alturaPokemon = scan.nextDouble();
+    this.setAltura(alturaPokemon);
+
     this.setId();
     this.salvar(this);
-    scan.close();
   }
 
   public void listar() {
@@ -144,39 +155,6 @@ public class Pokemon extends Caracteristica {
     pkScan.close();
 
   }
-
-  // public void buscar(int id) {
-  // File f = new File("src/main/java/com/ucb/pokedex/database/pokemon.txt");
-  // try {
-
-  // FileReader fr = new FileReader(f);
-  // BufferedReader br = new BufferedReader(fr);
-  // String s;
-  // int count = 0;
-
-  // String line = null;
-
-  // while ((line = br.readLine()) != null) {
-
-  // if (!line.trim().equals("" + id)) {
-  // System.out.println(Pokemon);
-  // }
-  // }
-
-  // if (count != 0) // Check for count not equal to zero
-  // {
-  // System.out.println("The given word is present for " + count + " Times in the
-  // file");
-  // } else {
-  // System.out.println("The given word is not present in the file");
-  // }
-
-  // fr.close();
-  // br.close();
-  // } catch (Exception err) {
-  // System.out.println(err.toString());
-  // }
-  // }
 
   public Pokemon() {
     super();

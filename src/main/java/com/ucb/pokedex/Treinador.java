@@ -1,24 +1,41 @@
 package com.ucb.pokedex;
 
-import java.util.List;
-
+import java.util.Scanner;
 public class Treinador extends Caracteristica {
-    private List<Pokemon> pokemons;
-
-    public Treinador(List<Pokemon> pokemons) {
-        this.pokemons = pokemons;
-    }
-
+    String regiao;
+    
+ 
     public Treinador() {
         super();
     }
 
-    public List<Pokemon> getPokemons() {
-        return pokemons;
-    }
+   
+    
+    public String getRegiao() {
+    	return regiao;
+	  }
 
-    public void setPokemons(List<Pokemon> pokemons) {
-        this.pokemons = pokemons;
-    }
+	public void setRegiao(String regiao) {
+	    this.regiao = regiao;
+	}
 
+
+
+
+	public void listar() {
+		super.imprimirNome();
+		super.imprimirAltura();
+		System.out.println("Regiao: "+getRegiao());
+	  
+}
+	public void cadastrar(){
+		Scanner sc= new Scanner(System.in);
+		System.out.println("------Cadastro de treinador------");
+		System.out.println("Digite o nome do treinador: ");
+		this.setNome(sc.nextLine());
+		System.out.println("Digite a região do treinador: ");
+		this.setRegiao(sc.nextLine());
+		System.out.println("Digite a altura do treinador: ");
+	    this.setAltura(sc.nextDouble());
+	}
 }
