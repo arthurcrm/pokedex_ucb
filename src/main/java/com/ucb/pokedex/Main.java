@@ -14,6 +14,7 @@ public class Main {
     List<Pokemon> pokemons = new ArrayList<>();
     Pokemon pk = new Pokemon();
     int opcao = -1;
+    int id = 0;
     while (opcao != 0) {
       System.out.println("Menu");
       System.out.println("1- Pokemons");
@@ -41,13 +42,13 @@ public class Main {
               case 3:
                 System.out.println("Alterar pokemon");
                 System.out.println("Digite o ID do pokemon que deseja alterar");
-                int id = scan.nextInt();
+                id = scan.nextInt();
                 pk.alterar(id);
                 break;
               case 4:
                 System.out.println("Excluir pokemon");
                 System.out.println("Digite o ID do pokemon que deseja excluir");
-                int id = scan.nextInt();
+                id = scan.nextInt();
                 pk.excluir(id);
                 break;
               case 5:

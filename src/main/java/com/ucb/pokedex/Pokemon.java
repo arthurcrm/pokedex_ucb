@@ -145,6 +145,39 @@ public class Pokemon extends Caracteristica {
 
   }
 
+  // public void buscar(int id) {
+  // File f = new File("src/main/java/com/ucb/pokedex/database/pokemon.txt");
+  // try {
+
+  // FileReader fr = new FileReader(f);
+  // BufferedReader br = new BufferedReader(fr);
+  // String s;
+  // int count = 0;
+
+  // String line = null;
+
+  // while ((line = br.readLine()) != null) {
+
+  // if (!line.trim().equals("" + id)) {
+  // System.out.println(Pokemon);
+  // }
+  // }
+
+  // if (count != 0) // Check for count not equal to zero
+  // {
+  // System.out.println("The given word is present for " + count + " Times in the
+  // file");
+  // } else {
+  // System.out.println("The given word is not present in the file");
+  // }
+
+  // fr.close();
+  // br.close();
+  // } catch (Exception err) {
+  // System.out.println(err.toString());
+  // }
+  // }
+
   public Pokemon() {
     super();
   }
