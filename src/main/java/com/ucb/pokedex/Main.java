@@ -23,7 +23,6 @@ public class Main {
 	            System.out.println("2- Listar Pokedex");
 	            System.out.println("3- Alterar Pokemon cadastrado");
 	            System.out.println("4- Excluir Pokemon");
-	            System.out.println("5- Buscar Pokemon");
 	            System.out.println("0- Retornar ao menu anterior");
 	            opcao = scan.nextInt();
 	            switch (opcao) {
